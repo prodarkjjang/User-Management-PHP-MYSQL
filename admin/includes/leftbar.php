@@ -4,6 +4,10 @@
 				<li class="ts-label">Main</li>
 				<li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 			
+      <li><a href="verifiedlist.php"><i class="fa fa-users"></i> Verified Users</a>
+			</li>
+      <li><a href="blacklist.php"><i class="fa fa-users"></i> Blacklist</a>
+			</li>
 			<li><a href="userlist.php"><i class="fa fa-users"></i> Userlist</a>
 			</li>
 			<li><a href="profile.php"><i class="fa fa-user"></i> &nbsp;Profile</a>
