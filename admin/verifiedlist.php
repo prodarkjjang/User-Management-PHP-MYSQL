@@ -34,7 +34,7 @@ if(isset($_REQUEST['unconfirm']))
 	$query -> bindParam(':status',$memstatus, PDO::PARAM_STR);
 	$query-> bindParam(':aeid',$aeid, PDO::PARAM_STR);
 	$query -> execute();
-	$msg="Changes Sucessfully";
+	$msg="Changes Successfully";
 	}
 
 	if(isset($_REQUEST['confirm']))
@@ -46,7 +46,7 @@ if(isset($_REQUEST['unconfirm']))
 	$query -> bindParam(':status',$memstatus, PDO::PARAM_STR);
 	$query-> bindParam(':aeid',$aeid, PDO::PARAM_STR);
 	$query -> execute();
-	$msg="Changes Sucessfully";
+	$msg="Changes Successfully";
 	}
 
 
