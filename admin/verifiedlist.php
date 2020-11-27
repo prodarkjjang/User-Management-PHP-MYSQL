@@ -119,7 +119,9 @@ if(isset($_REQUEST['unconfirm']))
 					<div class="col-md-12">
 
 						<h2 class="page-title">Manage Verified Users</h2>
-
+                        <form action = "call-discord-api.php">
+                            <button type="submit" name="submit">submit</button>
+                        </form>
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 							<div class="panel-heading">List Users</div>
