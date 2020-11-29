@@ -131,6 +131,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <th>winnerCount</th>
                                                 <th>status</th>
                                                 <th>action</th>
+                                                
                                             </tr>
                                         </thead>
 

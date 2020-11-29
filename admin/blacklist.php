@@ -109,6 +109,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <h2 class="page-title">Manage Blacklist Users</h2>
                             <a href="edit-blacklist.php">Create new blacklist user</a>
                             <a href="upload-blacklist.php">Upload excel(WIP)</a>
+                            <form action="edit-blacklist.php" method="post">
+                                <input type="submit" name="export" class="btn btn-primary btn-sm" value="Upload excel(WIP)" />
+                                <input type="hidden" id="upload_type" name="upload_type" value="blacklist">
+                                </select>
+                            </form>
                             <form action="php_spreadsheet_export.php" method="post">
                                 <input type="submit" name="export" class="btn btn-primary btn-sm" value="Export as excel(WIP)" />
                                 <input type="hidden" id="file_type" name="file_type" value="Xlsx">
@@ -135,6 +140,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <th>Username</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
+                                                
+
                                             </tr>
                                         </thead>
 
