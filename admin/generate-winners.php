@@ -42,9 +42,9 @@ if (strlen($_SESSION['alogin']) == 0) {
         $query->bindParam(':eventid', $eventid, PDO::PARAM_STR);
         $query->bindParam(':winnerCount', $winnerCount, PDO::PARAM_INT);
         $query->execute() or die(print_r($query->errorInfo(), true));
-        $msg = "Generated Winners Successfully"; 
-        
-        header("location:contentpage.php?content=winners&successmsg=".$msg); 
+        $msg = "Generated Winners Successfully";   
+        //header('location:contentpage.php?content=winners&successmsg='.$msg); 
+        echo "<script>location='contentpage.php?content=winners&successmsg=".$msg."'</script>";
  
     }
 }
