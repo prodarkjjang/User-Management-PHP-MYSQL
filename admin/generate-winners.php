@@ -32,7 +32,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 ) 
                 AND EXISTS ( 
                     SELECT 1 FROM verifiedmembers c 
-                    WHERE LOWER(TRIM(a.name)) = LOWER(TRIM(c.name))
+                    WHERE LOWER(TRIM(a.discordName)) = LOWER(TRIM(c.name))
                 ) 
                 AND status = 1 
                 ORDER BY RAND() 

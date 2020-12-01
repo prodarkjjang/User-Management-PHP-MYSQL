@@ -24,10 +24,17 @@ if (strlen($_SESSION['alogin']) == 0) {
             case 'blacklist':
                 $tablename = 'blacklistusers';
                 $titlename = 'Blacklist Users';
-                $editpage = 'edit-blacklist.php';
                 $createnew = 'Create new blacklist user';
                 $columnnames = array("name" => "0", "email" => "1", "platform" => "2", "username" => "3", "description" => "4", "phoneNo" => "5");
                 $startRow = 3;
+                break;
+            case 'participants':
+                $tablename = 'participants';
+                $titlename = 'Participants';
+                $createnew = 'Create new participant';
+                $columnnames = array("discordName" => "1", "fullName" => "2", "paypalEmail" => "3", "shippingAddress" => "4", "shippingOptions" => "7", "phoneNo" => "5", "comments" => "8", "registerDateTime" => "0");
+                $startRow = 1;
+
                 break;
             default:
                 echo 'Invalid upload page selected.';
@@ -67,6 +74,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                 $currentRow = 0;
 
                 $sql = "DELETE FROM " . $tablename;
+                if (isset($_REQUEST["eventid"])) {
+                    $sql .= " WHERE eventid = " . $_REQUEST["eventid"];
+                }
+
                 $query = $dbh->prepare($sql);
                 $query->execute() or die(print_r($query->errorInfo(), true));
                 foreach ($data as $row) {
@@ -75,12 +86,20 @@ if (strlen($_SESSION['alogin']) == 0) {
                         foreach ($columnnames as $columnname => $columnvalue) {
                             $sql .= $columnname . ", ";
                         }
-                        $sql .= "createdDateTime, updatedDateTime) ";
+                        $sql .= "createdDateTime, updatedDateTime";
+                        if (isset($_REQUEST["eventid"])) {
+                            $sql .= ", eventId";
+                        }
+                        $sql .= ") ";
                         $sql .= "VALUES (";
                         foreach ($columnnames as $columnname => $columnvalue) {
                             $sql .= "(:" . $columnname . "), ";
                         }
-                        $sql .= "NOW(), NOW())";
+                        $sql .= "NOW(), NOW()";
+                        if (isset($_REQUEST["eventid"])) {
+                            $sql .= ", " . $_REQUEST["eventid"];
+                        }
+                        $sql .= ")";
                         $query = $dbh->prepare($sql);
                         foreach ($columnnames as $columnname => $columnvalue) {
                             $sql .= "(:" . $columnname . "), ";
@@ -178,6 +197,20 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <label>Choose Excel File</label>
                                                 <input type="file" name="file" id="file">
                                                 <input type="hidden" id="uploadpage" name="uploadpage" value=<?php echo $uploadpage; ?>>
+                                                <?php
+                                                if (in_array($uploadpage, array('participants', 'winners'))) {
+                                                    $sql = "SELECT * from events";
+                                                    $query = $dbh->prepare($sql);
+                                                    $query->execute() or die(print_r($query->errorInfo(), true));
+                                                    $eventresults = $query->fetchAll(PDO::FETCH_OBJ);
+                                                ?>
+                                                    <label>Choose an event:</label><br>
+                                                    <select id="eventid" name="eventid">
+                                                        <?php foreach ($eventresults as $eventresult) { ?>
+                                                            <option value=<?php echo htmlentities($eventresult->id); ?>><?php echo htmlentities($eventresult->eventName); ?></option>
+                                                        <?php } ?>
+                                                    </select><br>
+                                                <?php } ?>
                                                 <button type="submit" id="submit" name="import" class="btn-submit">Import</button>
                                             </div>
                                         </form>

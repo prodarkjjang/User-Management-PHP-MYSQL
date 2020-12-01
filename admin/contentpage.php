@@ -173,7 +173,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 $eventresults = $query->fetchAll(PDO::FETCH_OBJ);
                             ?>
                                 <form action="" method="post">
-                                    <label for="eventid">View Winners:</label>
+                                    <label for="eventid">View <?php echo $titlename?>:</label>
                                     <select id="eventid" name="eventid">
                                         <?php foreach ($eventresults as $eventresult) { ?>
                                             <option value=<?php echo htmlentities($eventresult->id); ?>><?php echo htmlentities($eventresult->eventName); ?></option>
@@ -188,11 +188,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <!-- <input type="hidden" name="eventid" value=<?php echo $eventresult->id; ?>> -->
                             </form>
                             <form action="uploadexcel.php" method="post">
-                                <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Upload excel(WIP)" />
+                                <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Upload excel" />
                                 <input type="hidden" id="uploadpage" name="uploadpage" value=<?php echo $contentpage; ?>>
                             </form>
                             <form action="php_spreadsheet_export.php" method="post">
-                                <input type="submit" name="export" class="btn btn-primary btn-sm" value="Export as excel(WIP)" />
+                                <input type="submit" name="export" class="btn btn-primary btn-sm" value="Export as excel" />
                                 <input type="hidden" id="file_type" name="file_type" value="Xlsx">
                                 <input type="hidden" id="exportpage" name="exportpage" value=<?php echo $contentpage; ?>>
                             </form>

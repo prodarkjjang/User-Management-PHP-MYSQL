@@ -31,7 +31,7 @@ if (isset($_REQUEST['exportpage'])) {
     return;
 }
 
-$query = "SELECT * FROM " . $tablename . " ORDER BY id DESC";
+$query = "SELECT * FROM " . $tablename . " WHERE STATUS = 1 ORDER BY id DESC";
 
 $statement = $connect->prepare($query);
 
