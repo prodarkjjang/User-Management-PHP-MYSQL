@@ -67,7 +67,7 @@ echo "<script type='text/javascript'> document.location = 'profile.php'; </scrip
 									<button class="btn btn-primary btn-block" name="login" type="submit">LOGIN</button>
 								</form>
 								<br>
-								<p>Don't Have an Account? <a href="register.php" >Signup</a></p>
+								<!-- <p>Don't Have an Account? <a href="register.php" >Signup</a></p> -->
 							</div>
 						</div>
 					</div>
