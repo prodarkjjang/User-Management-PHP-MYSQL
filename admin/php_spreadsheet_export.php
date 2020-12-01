@@ -3,7 +3,7 @@ include '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-$connect = new PDO("mysql:host=localhost;dbname=cysm2", "root", "");
+$connect = new PDO("mysql:host=localhost:3306;dbname=bqkjzkmy_cysm2", "bqkjzkmy_cysm", "hangtuah");
 
 if (isset($_REQUEST['exportpage'])) {
     $exportpage = $_REQUEST['exportpage'];
